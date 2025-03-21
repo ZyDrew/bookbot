@@ -1,12 +1,16 @@
 from stats import *
+import sys
 
 def get_book_text(filepath):
     with open(filepath, 'r') as file:
         return file.read()
     
 def main():
-    filepath = 'books/frankenstein.txt'
-    book_text = get_book_text(filepath)
+    if len(sys.argv) < 2:
+        print("Usage: python3 main.py <path_to_book>")
+        sys.exit(1)
+
+    book_text = get_book_text(sys.argv[1])
 
     #Header
     print(12*"=" + " BOOKBOT " + 12*"=")
